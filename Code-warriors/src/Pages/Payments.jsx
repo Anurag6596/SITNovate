@@ -1,5 +1,6 @@
-import React from 'react'
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
+
 
 const Payments = () => {
 
@@ -42,7 +43,7 @@ async function displayRazorpay() {
         key: "rzp_test_kOzZn6goGV9Z92", 
         amount: amount.toString(),
         currency: currency,
-        name: "Soumya Corp.",
+        name: "Anurag   ",
         description: "Test Transaction",
         // image: { logo },
         order_id: order_id,
@@ -87,4 +88,4 @@ async function displayRazorpay() {
   )
 }
 
-export default Payments
+export default Payments;
