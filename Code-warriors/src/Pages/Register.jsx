@@ -2,23 +2,34 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 
-export const Login = () => {
+export const Register = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const login = useAuthStore((state) => state.login);
+  const register = useAuthStore((state) => state.register);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login(email, password);
+    register(name, email, password);
     navigate('/');
   };
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
-        <h2 className="text-2xl font-bold text-center mb-6">Login to IRCTC</h2>
+        <h2 className="text-2xl font-bold text-center mb-6">Register for IRCTC</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-gray-700 mb-2">Full Name</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
           <div>
             <label className="block text-gray-700 mb-2">Email</label>
             <input
@@ -41,9 +52,9 @@ export const Login = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+            className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700"
           >
-            Login
+            Register
           </button>
         </form>
       </div>

@@ -43,7 +43,7 @@ async function displayRazorpay() {
         key: "rzp_test_kOzZn6goGV9Z92", 
         amount: amount.toString(),
         currency: currency,
-        name: "Anurag   ",
+        name: "Anurag",
         description: "Test Transaction",
         // image: { logo },
         order_id: order_id,
