@@ -73,7 +73,7 @@ const login = async (req, res) => {
     }
 
     const token = jwt.sign({ email }, process.env.JWT_SECRET, {
-      expiresIn: "1d",-
+      expiresIn: "1d",
     });
 
     res.cookie("token", token, {
