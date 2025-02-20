@@ -11,7 +11,7 @@ export const TrainCard = ({ train }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.02 }}
-      className="bg-white rounded-lg shadow-md p-6 mb-4"
+      className="bg-purple-200 text-white-200 font-sm text-xl rounded-lg shadow-md p-6 mb-4"
     >
       <div className="flex justify-between">
         <div>

@@ -61,7 +61,7 @@ function BookingForm() {
                   type="text"
                   placeholder="Name"
                   required
-                  className="p-2 border-blue-300 rounded"
+                  className="p-2 border-blue- rounded"
                   value={passenger.name}
                   onChange={(e) => handleInputChange(index, 'name', e.target.value)}
                 />
