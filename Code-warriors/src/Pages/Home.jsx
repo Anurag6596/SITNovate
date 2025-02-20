@@ -1,8 +1,11 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { TrainCard } from '../Components/TrainCard.jsx';
 import { trains } from '../data/trains';
 
 export const Home = () => {
+  
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -12,7 +15,7 @@ export const Home = () => {
       <h1 className="text-3xl font-bold text-gray-800 mb-6">
         Available Trains
       </h1>
-      
+
       <div className="space-y-4">
         {trains.map((train, index) => (
           <motion.div

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import PropTypes from 'prop-types';
 
 export const Contact = () => {
   return (
@@ -10,14 +11,14 @@ export const Contact = () => {
         className="max-w-4xl mx-auto"
       >
         <h1 className="text-4xl font-bold text-center mb-12">Contact Us</h1>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-white p-8 rounde d-lg shadow-md"
+            className="bg-white p-8 rounded-lg shadow-md"
           >
             <h2 className="text-2xl font-semibold mb-6">Get in Touch</h2>
             <form className="space-y-4">
@@ -66,13 +67,13 @@ export const Contact = () => {
               title="Phone"
               content="1800-111-139"
             />
-            
+
             <ContactInfoCard
               icon={<Mail className="text-blue-600" size={24} />}
               title="Email"
               content="care@irctc.co.in"
             />
-            
+
             <ContactInfoCard
               icon={<MapPin className="text-blue-600" size={24} />}
               title="Address"
@@ -91,7 +92,7 @@ export const Contact = () => {
   );
 };
 
-// Optional helper component for contact cards
+// ContactInfoCard Component
 const ContactInfoCard = ({ icon, title, content }) => (
   <div className="bg-white p-6 rounded-lg shadow-md">
     <div className="flex items-center space-x-4">
@@ -103,3 +104,9 @@ const ContactInfoCard = ({ icon, title, content }) => (
     </div>
   </div>
 );
+
+ContactInfoCard.propTypes = {
+  icon: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+};

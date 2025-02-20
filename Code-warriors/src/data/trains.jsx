@@ -1,21 +1,4 @@
-// types/train.ts
-export interface Train {
-  id: string;
-  name: string;
-  number: string;
-  from: string;
-  to: string;
-  departureTime: string;
-  arrivalTime: string;
-  duration: string;
-  price: number;
-  availableSeats: number;
-}
-
-
-// data/trains.ts
-
-export const trains: Train[] = [
+export const trains = [
   {
     id: '1',
     name: 'Nagpur Prayagraj Express',

@@ -1,5 +1,7 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
 export const TrainCard = ({ train }) => {
   const navigate = useNavigate();
@@ -9,12 +11,11 @@ export const TrainCard = ({ train }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.02 }}
-      transition={{ duration: 0.3 }}
       className="bg-white rounded-lg shadow-md p-6 mb-4"
     >
-      <div className="flex justify-between items-start">
+      <div className="flex justify-between">
         <div>
-          <h3 className="text-xl font-bold text-gray-800">{train.name}</h3>
+          <h3 className="text-xl font-bold">{train.name}</h3>
           <p className="text-gray-600">Train No: {train.number}</p>
         </div>
         <div className="text-right">
@@ -23,31 +24,37 @@ export const TrainCard = ({ train }) => {
         </div>
       </div>
 
-      <div className="mt-4 flex justify-between items-center">
-        <div>
-          <div className="flex items-center space-x-8">
-            <div>
-              <p className="text-lg font-semibold">{train.departureTime}</p>
-              <p className="text-gray-600">{train.from}</p>
-            </div>
-            <div className="text-gray-400">→</div>
-            <div>
-              <p className="text-lg font-semibold">{train.arrivalTime}</p>
-              <p className="text-gray-600">{train.to}</p>
-            </div>
-          </div>
-          <p className="text-gray-600 mt-2">Duration: {train.duration}</p>
-        </div>
-
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => navigate(`/book/${train.id}`)} // Fixed template literal
-          className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors"
-        >
-          Book Now
-        </motion.button>
+      <div className="mt-4">
+        <p>
+          {train.from} → {train.to}
+        </p>
+        <p>Departure: {train.departureTime}</p>
+        <p>Duration: {train.duration}</p>
       </div>
+
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        onClick={() =>
+          navigate(`/book/${train.id}`, { state: { train } }) // Pass train data via state
+        }
+        className="mt-4 bg-blue-600 text-white px-4 py-2 rounded"
+      >
+        Book Now
+      </motion.button>
     </motion.div>
   );
+};
+
+TrainCard.propTypes = {
+  train: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    availableSeats: PropTypes.number.isRequired,
+    departureTime: PropTypes.string.isRequired,
+    duration: PropTypes.string.isRequired,
+    from: PropTypes.string.isRequired,
+    to: PropTypes.string.isRequired,
+  }).isRequired,
 };
